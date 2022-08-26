@@ -1,0 +1,59 @@
+.card {
+  width: 155px;
+  margin-bottom: 15px;
+  background: #FFFFFF;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+}
+
+.rating {
+  display: flex;
+}
+
+.rating_num {
+  margin-left: 4px;
+}
+
+.card_block {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.card_img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card_title {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: -0.03em;
+}
+
+.card_subtitle {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card_content {
+  color: #FF0000;
+}
+
+.add_button {
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  background-color:#FF0000;
+  color: #FFFFFF;
+  border: none;
+  font-size: 20px;
+}

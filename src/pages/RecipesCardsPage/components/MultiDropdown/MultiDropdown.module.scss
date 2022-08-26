@@ -1,0 +1,28 @@
+/*не изменяется цвет у выбронного элемента*/
+.dropdown {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-top: 16px;
+    margin-bottom: 20px;
+}
+
+.dropdown_button {
+    width: 176px;
+    height: 36px;
+    border: transparent;
+    background: linear-gradient(98.81deg, #FFF0F0 -0.82%, #FFDFDF 101.53%);
+    border-radius: 7px;
+    text-align: left;
+}
+
+.dropdown_item {
+    display: block;
+    width: 176px;
+    height: 36px;
+    border: transparent;
+    background: linear-gradient(98.81deg, #FFF0F0 -0.82%, #FFDFDF 101.53%);
+    mix-blend-mode: soft-light;
+    border-radius: 7px;
+    text-align: left;
+}

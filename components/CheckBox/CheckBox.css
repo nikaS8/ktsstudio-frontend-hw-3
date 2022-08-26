@@ -1,0 +1,13 @@
+.checkbox {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(98.81deg, #FFF0F0 -0.82%, #FFDFDF 101.53%);
+    border-radius: 7px;
+    appearance: none;
+}
+
+input[type="checkbox"]:checked {
+    /* checked state CSS */
+    /*border: 2px solid #FF5555;*/
+    background-color: red;
+}

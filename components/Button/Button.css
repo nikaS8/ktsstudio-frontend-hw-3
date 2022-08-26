@@ -1,0 +1,22 @@
+.button {
+    border-radius: 7px;
+    width: 108px;
+    height: 41px;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 25px;
+    letter-spacing: -0.03em;
+}
+
+.button_disabled {
+    background-color:#ff908b;
+}
+
+.button_color-primary {
+    background-color: red;
+}
+
+.button_color-secondary {
+    background-color: #e09c9c;
+}
