@@ -1,5 +1,29 @@
 {
   "compilerOptions": {
+    "baseUrl": "src",
+    "paths": {
+      "@config/*": [
+        "./config/*"
+      ],
+      "@styles/*": [
+        "./styles/*"
+      ],
+      "@img/*": [
+        "./assets/img/*"
+      ],
+      "@myTypes/*": [
+        "./myTypes/*"
+      ],
+      "@pages/*": [
+        "./pages/*"
+      ],
+      "@RecipesCardsPage/*": [
+        "./pages/RecipesCardsPage"
+      ],
+      "@DetailRecipePage/*": [
+        "./pages/DetailRecipePage"
+      ]
+    },
     "target": "es5",
     "lib": [
       "dom",

@@ -1,0 +1,44 @@
+.detailed_block {
+  max-width: 375px;
+}
+
+.description {
+  padding-left: 34px;
+  padding-right: 46px;
+}
+
+.title {
+  text-align: left;
+  margin-top: 48px;
+  margin-bottom: 20px;
+  font-size: 27px;
+  font-weight: 500;
+  line-height: 35px;
+
+}
+
+.rating_block {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stars_block {
+  display: flex;
+  align-items: center;
+}
+
+.img_star {
+  margin-right: 10px;
+}
+
+.img_heart {
+  margin-right: 15px;
+}
+
+.heart_block {
+  display: flex;
+}
+
+.summary {
+  text-align: left;
+}

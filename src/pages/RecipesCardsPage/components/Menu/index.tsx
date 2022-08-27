@@ -1,4 +1,4 @@
-export { default } from "./Menu";
+export { default } from './Menu'
 
 //внутри components только компоненты этой страницы
 

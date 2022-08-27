@@ -1,34 +1,34 @@
-import React from "react";
+import React from 'react'
 
-import classNames from "classnames";
+import classNames from 'classnames'
 
-import logo from "../../../../assets/img/Frame.png";
-import styles from "./Input.module.scss";
+import logo from '../../../../assets/img/Frame.png'
+import styles from './Input.module.scss'
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
-  "onChange"
+  'onChange'
 > & {
   /** Значение поля */
-  value: string;
+  value: string
   /** Callback, вызываемый при вводе данных в поле */
-  onChange: (value: string) => void;
-  type?: string;
-  className?: string;
-  disabled?: boolean;
-};
+  onChange: (value: string) => void
+  type?: string
+  className?: string
+  disabled?: boolean
+}
 
 export const Input: React.FC<InputProps> = ({
   value,
   onChange,
-  type = "text",
+  type = 'text',
   className,
   disabled,
   ...rest
 }) => {
   let inputCls = classNames(styles.input, className, {
     input_disabled: disabled,
-  });
+  })
   return (
     <div className={styles.input_wrapper}>
       <svg
@@ -69,7 +69,7 @@ export const Input: React.FC<InputProps> = ({
       </svg>
       <input
         {...rest}
-        placeholder={"Search"}
+        placeholder={'Search'}
         value={value}
         type={type}
         onChange={(e) => onChange(e.target.value)}
@@ -77,5 +77,5 @@ export const Input: React.FC<InputProps> = ({
         className={inputCls}
       />
     </div>
-  );
-};
+  )
+}
