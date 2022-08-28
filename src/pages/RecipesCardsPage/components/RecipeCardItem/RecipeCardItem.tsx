@@ -1,36 +1,29 @@
-// @ts-nocheck
 import React, { useEffect, useState } from 'react'
 
 import star from '@img/Star 3.svg'
 import { Link } from 'react-router-dom'
 
-import DetailRecipePage from '../../../DetailRecipePage/DetailRecipePage'
 import styles from './RecipeCardItem.module.scss'
 
 type CardProps = {
-  /** URL изображения */
-  meal: {}
+  meal: { id: string }
   image: string
-  /** Заголовок карточки */
   title: React.ReactNode
-  /** Подзаголовок карточки */
-  subtitle: React.ReactNode
-  /** Содержимое карточки (футер/боковая часть), может быть пустым */
+  subtitle: string[]
   calories?: React.ReactNode
-  /** Клик на карточку */
   onClick?: React.MouseEventHandler
 }
 
 export const RecipeCardItem: React.FC<CardProps> = ({
-                                                      meal,
-                                                      image,
-                                                      title,
-                                                      subtitle,
-                                                      calories,
-                                                      onClick,
-                                                    }) => {
-  const [hasRender, setRender] = useState(false)
-  const onShow = React.useCallback(() => setRender(true), [])
+  meal,
+  image,
+  title,
+  subtitle,
+  calories,
+  onClick,
+}) => {
+  // const [hasRender, setRender] = useState(false)
+  // const onShow = React.useCallback(() => setRender(true), [])
 
   return (
     <div className={styles.card} onClick={onClick}>
@@ -41,8 +34,8 @@ export const RecipeCardItem: React.FC<CardProps> = ({
         </div>
         <img
           className={styles.card_img}
-          width='87px'
-          height='70px'
+          width="87px"
+          height="70px"
           src={image}
           alt={'food'}
         />

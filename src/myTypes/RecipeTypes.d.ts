@@ -1,20 +1,24 @@
 export type RecipeContexProps = {
-  mealData: RecipeResult[]
+  fetchMealData: () => void
+  mealData: RecipeResult[] | null
   loading: boolean
-  fetchSearch: (searchValue: string) => void
-  searchData: RecipeResult[]
-  fetchID: (id: string) => void
-  recipeId: RecipeResult[]
+  fetchDetailsInfo: (id: string) => void
+  detailsInfo: RecipeDetails | null
 }
 
 export interface RecipeResult {
   id: string
   image: string
   title: string
-  nutrition: {
-    nutrients: { amount: string }[]
-    ingredients: { name: string }[]
-  }
+  calories: string
+  ingredients: string[]
+}
+
+export interface RecipeDetails {
+  id: string
+  image: string
+  title: string
+  summary: string
 }
 
 export interface SearchRecipe {

@@ -1,26 +1,25 @@
-// @ts-nocheck
 import React from 'react'
 
 import './App.scss'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import DetailRecipePage from './pages/DetailRecipePage/DetailRecipePage'
-import Menu from './pages/RecipesCardsPage/components/Menu'
-import { RecipeProvider } from './pages/RecipesCardsPage/components/RecipeContex/RecipeContex'
+import DetailRecipePage from '@pages/DetailRecipePage/DetailRecipePage'
+import Menu from '@pages/RecipesCardsPage/components/Menu'
+import { RecipeProvider } from '@pages/RecipesCardsPage/components/RecipeContex/RecipeContex'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 const App = () => {
   return (
-    <div className='App'>
-      <BrowserRouter>
-        <RecipeProvider>
+    <div className="App">
+      <RecipeProvider>
+        <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Menu />} />
-            <Route path='/detail-recipe'>
-              <Route path=':id' element={<DetailRecipePage />} />
+            <Route path="/" element={<Menu />} />
+            <Route path="/detail-recipe">
+              <Route path=":id" element={<DetailRecipePage />} />
             </Route>
           </Routes>
-        </RecipeProvider>
-      </BrowserRouter>
+        </BrowserRouter>
+      </RecipeProvider>
     </div>
   )
 }

@@ -2,6 +2,20 @@
   max-width: 375px;
 }
 
+.next_button {
+  position: absolute;
+  top: 2%;
+  left: 3%;
+  width: 45px;
+  height: 45px;
+  background: #ffd100;
+  mix-blend-mode: normal;
+  border-radius: 7px;
+  border: transparent;
+  opacity: 0.7;
+}
+
+
 .description {
   padding-left: 34px;
   padding-right: 46px;
@@ -14,7 +28,6 @@
   font-size: 27px;
   font-weight: 500;
   line-height: 35px;
-
 }
 
 .rating_block {
