@@ -27,9 +27,9 @@ export const RecipeProvider = ({ children }: any) => {
         title: raw.title,
         calories: raw.nutrition.nutrients[0].amount,
         ingredients: raw.nutrition.ingredients.map(
-          (piece: { name: string }) => piece.name,
+          (piece: { name: string }) => piece.name
         ),
-      })),
+      }))
     )
     setLoading(false)
   }

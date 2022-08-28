@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 
 import star from '@img/Star 3.svg'
 import { Link } from 'react-router-dom'

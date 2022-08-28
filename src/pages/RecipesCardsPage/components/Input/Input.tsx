@@ -2,16 +2,13 @@ import React from 'react'
 
 import classNames from 'classnames'
 
-import logo from '../../../../assets/img/Frame.png'
 import styles from './Input.module.scss'
 
 export type InputProps = Omit<
   React.InputHTMLAttributes<HTMLInputElement>,
   'onChange'
 > & {
-  /** Значение поля */
   value: string
-  /** Callback, вызываемый при вводе данных в поле */
   onChange: (value: string) => void
   type?: string
   className?: string

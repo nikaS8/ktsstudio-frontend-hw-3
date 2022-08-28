@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import { RecipeResult } from '@myTypes/RecipeTypes'
 
-import RES from '../../../../config/result'
+// import RES from '../../../../config/result'
 import { Input } from '../Input/Input'
 import { MultiDropdown, Option } from '../MultiDropdown/MultiDropdown'
 import RecipeCardItem from '../RecipeCardItem'

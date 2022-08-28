@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import heart from '@img/Heart.svg'
 import path from '@img/Path.svg'
 import star from '@img/Star 3.svg'
 import { Link, useParams } from 'react-router-dom'
 
-import RES from '../../config/result'
+// import RES from '../../config/result'
 import { useRecipeContext } from '../RecipesCardsPage/components/RecipeContex/RecipeContex'
 import styles from './DetailRecipePage.module.scss'
 
