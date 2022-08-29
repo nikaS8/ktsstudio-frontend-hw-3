@@ -1,7 +1,9 @@
+@import 'src/styles/variables';
+
 .card {
   width: 155px;
   margin-bottom: 15px;
-  background: #FFFFFF;
+  background: $white;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.12);
   border-radius: 10px;
 }
@@ -26,16 +28,12 @@
 }
 
 .card_title {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 25px;
-  letter-spacing: -0.03em;
+  @include text(500, 18px, 25px);
 }
 
 .card_subtitle {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 16px;
+  @include text(400, 12px, 16px);
+  letter-spacing: -0.03em;
 }
 
 .footer {
@@ -45,22 +43,14 @@
 }
 
 .card_content {
-  color: #FF0000;
+  color: $red;
 }
-
-//position: absolute;
-//    bottom: 0;
 
 .add_button {
   border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  background-color: #FF0000;
-  color: #FFFFFF;
+  background-color: $red;
+  color: $white;
   border: none;
   font-size: 20px;
+  @include button-size(24px, 24px);
 }
-
-//position: absolute;
-//    bottom: 18px;
-//    left: 120px;

@@ -1,22 +1,19 @@
 import React from 'react'
 
-import './App.scss'
-
+import { APP_ROUTES } from '@config/routes'
 import DetailRecipePage from '@pages/DetailRecipePage/DetailRecipePage'
-import Menu from '@pages/RecipesCardsPage/components/Menu'
-import { RecipeProvider } from '@pages/RecipesCardsPage/components/RecipeContex/RecipeContex'
+import MenuPage from '@pages/MenuPage'
+import { RecipeProvider } from '@pages/RecipeContext/RecipeContex'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 const App = () => {
   return (
-    <div className="App">
+    <div className='App'>
       <RecipeProvider>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Menu />} />
-            <Route path="/detail-recipe">
-              <Route path=":id" element={<DetailRecipePage />} />
-            </Route>
+            <Route path={APP_ROUTES.RECIPE} element={<MenuPage />} />
+            <Route path={APP_ROUTES.RECIPE_DETAIL} element={<DetailRecipePage />} />
           </Routes>
         </BrowserRouter>
       </RecipeProvider>

@@ -1,0 +1,20 @@
+// colors
+$white: #ffffff;
+$red: #ff0000;
+$yellow: #ffd100;
+$light-pink: #fff0f0;
+$dark-pink: #ffdfdf;
+
+$mobileWidth: 375px;
+
+
+@mixin text($font-weight, $font-size, $line-height) {
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+@mixin button-size($width, $height) {
+  width: $width;
+  height: $height;
+}

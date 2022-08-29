@@ -2,34 +2,18 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "@config/*": [
-        "./config/*"
-      ],
-      "@styles/*": [
-        "./styles/*"
-      ],
-      "@img/*": [
-        "./assets/img/*"
-      ],
-      "@myTypes/*": [
-        "./myTypes/*"
-      ],
-      "@pages/*": [
-        "./pages/*"
-      ],
-      "@RecipesCardsPage/*": [
-        "./pages/RecipesCardsPage"
-      ],
-      "@DetailRecipePage/*": [
-        "./pages/DetailRecipePage"
-      ]
+      "@config/*": ["./config/*"],
+      "@components/*": ["./components/*"],
+      "@context/*": ["./context/*"],
+      "@styles/*": ["./styles/*"],
+      "@img/*": ["./assets/img/*"],
+      "@myTypes/*": ["./myTypes/*"],
+      "@pages/*": ["./pages/*"],
+      "@RecipesCardsPage/*": ["./pages/RecipesCardsPage"],
+      "@DetailRecipePage/*": ["./pages/DetailRecipePage"]
     },
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -44,7 +28,5 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

@@ -27,32 +27,12 @@ export const RecipeProvider = ({ children }: any) => {
         title: raw.title,
         calories: raw.nutrition.nutrients[0].amount,
         ingredients: raw.nutrition.ingredients.map(
-          (piece: { name: string }) => piece.name
+          (piece: { name: string }) => piece.name,
         ),
-      }))
+      })),
     )
     setLoading(false)
   }
-
-  // const fetchSearch = async (searchValue: string) => {
-  //   // const fetch = async () => {
-  //   setLoading(true)
-  //   const result = await axios({
-  //     method: 'get',
-  //     url: `https://api.spoonacular.com/recipes/complexSearch?query=${searchValue}&addRecipeInformation=true&apiKey=83bff821e7514569972160e6b849ee2f`,
-  //   })
-  //   setSearchData(
-  //     result.data.results.map((raw: RecipeResult) => ({
-  //       id: raw.id,
-  //       image: raw.image,
-  //       title: raw.title,
-  //       calories: raw.nutrition.nutrients[0].amount,
-  //       ingredients: raw.nutrition.ingredients.map((piece) => piece.name),
-  //     })),
-  //   )
-  //   setLoading(false)
-  //   // }
-  // }
 
   const fetchDetailsInfo = async (id: string) => {
     setLoading(true)
@@ -68,10 +48,11 @@ export const RecipeProvider = ({ children }: any) => {
         summary: res.data.summary,
       })
     } catch (err) {
-      console.error(err)
+      return (err)
     }
     setLoading(false)
   }
+
   return (
     <RecipeContex.Provider
       value={{

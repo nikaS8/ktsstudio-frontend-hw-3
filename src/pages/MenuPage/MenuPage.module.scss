@@ -1,5 +1,7 @@
+@import '../../styles/variables';
+
 .menu_block {
-  max-width: 375px;
+  max-width: $mobileWidth;
   padding-left: 24px;
 }
 

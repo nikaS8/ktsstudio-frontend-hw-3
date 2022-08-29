@@ -1,20 +1,23 @@
+@import 'src/styles/variables';
+
 .detailed_block {
-  max-width: 375px;
+  max-width: $mobileWidth;
+
+  &__img {
+    width: 100%;
+  }
 }
 
-.next_button {
+.back_button {
   position: absolute;
   top: 2%;
   left: 3%;
-  width: 45px;
-  height: 45px;
-  background: #ffd100;
-  mix-blend-mode: normal;
+  background: $yellow;
   border-radius: 7px;
   border: transparent;
   opacity: 0.7;
+  @include button-size(45px, 45px);
 }
-
 
 .description {
   padding-left: 34px;
@@ -33,23 +36,25 @@
 .rating_block {
   display: flex;
   justify-content: space-between;
-}
 
-.stars_block {
-  display: flex;
-  align-items: center;
-}
+  .stars_block {
+    display: flex;
+    align-items: center;
 
-.img_star {
-  margin-right: 10px;
-}
+    &__img {
+      width: 16px;
+      height: 16px;
+      margin-right: 10px;
+    }
+  }
 
-.img_heart {
-  margin-right: 15px;
-}
+  .heart_block {
+    display: flex;
 
-.heart_block {
-  display: flex;
+    &__img {
+      margin-right: 15px;
+    }
+  }
 }
 
 .summary {
