@@ -5,8 +5,14 @@ $yellow: #ffd100;
 $light-pink: #fff0f0;
 $dark-pink: #ffdfdf;
 
+//width
 $mobileWidth: 375px;
+$inputWidth: 70%;
+$cardWidth: 155px;
 
+//height
+$cardTitleH: 100px;
+$cardSubtitleH: 180px;
 
 @mixin text($font-weight, $font-size, $line-height) {
   font-weight: $font-weight;

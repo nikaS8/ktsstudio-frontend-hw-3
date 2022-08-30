@@ -1,24 +1,28 @@
 @import 'src/styles/variables';
 
-.input_wrapper {
+.container {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   position: relative;
+
+  &__img {
+    position: absolute;
+    top: 25%;
+    left: 20%;
+  }
+
+  &__input {
+    width: $inputWidth;
+    height: 36px;
+    padding-left: 13%;
+    background: linear-gradient(98.81deg, $light-pink -0.82%, $dark-pink 101.53%);
+    border-radius: 7px;
+    border-color: transparent;
+    @include text(400, 12px, 28px);
+  }
+
 }
 
-.input {
-  width: 70%;
-  height: 36px;
-  padding-left: 13%;
-  background: linear-gradient(98.81deg, $light-pink -0.82%, $dark-pink 101.53%);
-  border-radius: 7px;
-  border-color: transparent;
-  @include text(400, 12px, 28px);
-}
 
-.input_img {
-  position: absolute;
-  top: 25%;
-  left: 20%;
-}
+

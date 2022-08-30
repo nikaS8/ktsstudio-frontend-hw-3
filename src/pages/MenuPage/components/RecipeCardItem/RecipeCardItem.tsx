@@ -3,7 +3,6 @@ import React from 'react'
 import star from '@img/Star 3.svg'
 import { Link } from 'react-router-dom'
 
-
 import styles from './RecipeCardItem.module.scss'
 
 type CardProps = {
@@ -25,28 +24,26 @@ export const RecipeCardItem: React.FC<CardProps> = ({
                                                     }) => {
   return (
     <div className={styles.card} onClick={onClick}>
-      <div className={styles.card_block}>
-        <div className={styles.rating}>
+      <div className={styles['card__block']}>
+        <div className={styles['card__block-rating']}>
           <img src={star} alt={'star'} />
-          <p className={styles.rating_num}>{'3.8'}</p>
+          <p className={styles['card__block-rating-num']}>{'3.8'}</p>
         </div>
         <img
-          className={styles.card_img}
-          width='87px'
-          height='70px'
+          className={styles['card__block-img']}
           src={image}
           alt={'food'}
         />
-        <h1 className={styles.card_title}>{title}</h1>
-        <h2 className={styles.card_subtitle}>
+        <h1 className={styles['card__block-title']}>{title}</h1>
+        <h2 className={styles['card__block-subtitle']}>
           {subtitle.map((word) => `${word}, `)}
         </h2>
-        <div className={styles.footer}>
-          <h3 className={styles.card_content}>
+        <div className={styles['card__block-footer']}>
+          <h3 className={styles['card__block-footer-content']}>
             {Math.round(Number(calories))} kcal
           </h3>
           <Link to={`/detail-recipe/${meal.id}`}>
-            <button className={styles.add_button}>+</button>
+            <button className={styles['card__block-footer-btn']}>+</button>
           </Link>
         </div>
       </div>
@@ -54,4 +51,4 @@ export const RecipeCardItem: React.FC<CardProps> = ({
   )
 }
 
-export default RecipeCardItem
+export default React.memo(RecipeCardItem)

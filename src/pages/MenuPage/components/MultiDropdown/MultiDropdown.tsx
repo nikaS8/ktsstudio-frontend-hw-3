@@ -37,7 +37,7 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
   return (
     <div className={styles.dropdown}>
       <input
-        className={styles.dropdown_button}
+        className={styles['dropdown__btn']}
         type='button'
         value={pluralizeOptions(value)}
         onClick={() => setIsClicked(!isClicked)}
@@ -47,7 +47,7 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
       options.map((option) => {
         return (
           <input
-            className={styles.dropdown_item}
+            className={styles['dropdown__item']}
             type='button'
             key={option.key}
             value={option.value}

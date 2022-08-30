@@ -7,9 +7,13 @@ import {
 } from '@myTypes/RecipeTypes'
 import axios from 'axios'
 
+interface ProviderType {
+  children: React.ReactNode
+}
+
 export const RecipeContex = createContext<RecipeContexProps | null>(null)
 
-export const RecipeProvider = ({ children }: any) => {
+export const RecipeProvider: React.FC<ProviderType> = ({ children }) => {
   const [mealData, setMealData] = useState<RecipeResult[] | null>(null)
   const [loading, setLoading] = useState(false)
   const [detailsInfo, setDetailsInfo] = useState<RecipeDetails | null>(null)

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-import { Input } from '@components/Input/Input'
+import Input from '@components/Input/Input'
 import { RecipeResult } from '@myTypes/RecipeTypes'
 import { useRecipeContext } from '@pages/RecipeContext/RecipeContex'
 
@@ -24,7 +24,7 @@ const MenuPage = () => {
   }, [])
 
   return (
-    <div className={styles.menu_block}>
+    <div className={styles.menu}>
       <Input onChange={(value: string) => setValue(value)} value={value} />
       <MultiDropdown
         options={multiDropdownCategories}
@@ -35,22 +35,20 @@ const MenuPage = () => {
         }
       />
       {!value && (
-        <div className={styles.recipe_content}>
-          <div className={styles.recipe_content}>
-            {mealData?.map((food: RecipeResult) => (
-              <RecipeCardItem
-                key={food.id}
-                meal={food}
-                image={food.image}
-                title={food.title}
-                subtitle={food.ingredients}
-                calories={food.calories}
-              />
-            ))}
-          </div>
+        <div className={styles['menu__recipe']}>
+          {mealData?.map((food: RecipeResult) => (
+            <RecipeCardItem
+              key={food.id}
+              meal={food}
+              image={food.image}
+              title={food.title}
+              subtitle={food.ingredients}
+              calories={food.calories}
+            />
+          ))}
         </div>
       )}
-      {value && <div className={styles.recipe_content}>{}</div>}
+      {value && <div className={styles['menu__recipe-content']}>{}</div>}
     </div>
   )
 }

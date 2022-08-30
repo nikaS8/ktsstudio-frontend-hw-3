@@ -1,12 +1,12 @@
 @import '../../styles/variables';
 
-.menu_block {
+.menu {
   max-width: $mobileWidth;
   padding-left: 24px;
-}
 
-.recipe_content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  &__recipe {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
 }
