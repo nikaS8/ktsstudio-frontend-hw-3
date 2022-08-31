@@ -1,0 +1,61 @@
+@import 'src/styles/variables';
+
+.recipe {
+  max-width: $mobileWidth;
+
+  &__btn {
+    position: absolute;
+    top: 2%;
+    left: 3%;
+    background: $yellow;
+    border-radius: 7px;
+    border: transparent;
+    opacity: 0.7;
+    @include button-size(45px, 45px);
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__description {
+    padding-left: 34px;
+    padding-right: 46px;
+
+    &-title {
+      text-align: left;
+      margin-top: 48px;
+      margin-bottom: 20px;
+      @include text(500, 27px, 35px);
+    }
+
+    &-rating {
+      display: flex;
+      justify-content: space-between;
+
+      &-star {
+        display: flex;
+        align-items: center;
+
+        &-img {
+          width: 16px;
+          height: 16px;
+          margin-right: 10px;
+        }
+      }
+
+      &-heart {
+        display: flex;
+
+        &-img {
+          margin-right: 15px;
+        }
+      }
+    }
+
+    &-summary {
+      text-align: left;
+      margin-bottom: 20px;
+    }
+  }
+}

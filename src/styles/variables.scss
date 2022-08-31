@@ -1,0 +1,26 @@
+// colors
+$white: #ffffff;
+$red: #ff0000;
+$yellow: #ffd100;
+$light-pink: #fff0f0;
+$dark-pink: #ffdfdf;
+
+//width
+$mobileWidth: 375px;
+$inputWidth: 70%;
+$cardWidth: 155px;
+
+//height
+$cardTitleH: 100px;
+$cardSubtitleH: 180px;
+
+@mixin text($font-weight, $font-size, $line-height) {
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+@mixin button-size($width, $height) {
+  width: $width;
+  height: $height;
+}
