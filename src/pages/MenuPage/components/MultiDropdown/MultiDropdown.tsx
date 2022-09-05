@@ -9,10 +9,10 @@ export type Option = {
 
 export type MultiDropdownProps = {
   options: Option[]
-  value: Option[]
-  onChange: (value: Option[]) => void
+  value: Option | null
+  onChange: (value: Option) => void
   disabled?: boolean
-  pluralizeOptions: (value: Option[]) => string
+  pluralizeOptions: (value: Option | null) => string
 }
 
 export const MultiDropdown: React.FC<MultiDropdownProps> = ({
@@ -23,16 +23,6 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
                                                               pluralizeOptions,
                                                             }) => {
   const [isClicked, setIsClicked] = React.useState(false)
-
-  const handleClick = (option: Option) => {
-    let newVal: Option[] = []
-    if (value.some((el) => el.key === option.key)) {
-      newVal = value.filter((el) => el.key !== option.key)
-    } else {
-      newVal = [...value, option]
-    }
-    onChange(newVal)
-  }
 
   return (
     <div className={styles.dropdown}>
@@ -51,7 +41,10 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
             type='button'
             key={option.key}
             value={option.value}
-            onClick={() => handleClick(option)}
+            onClick={() => {
+              onChange(option)
+              setIsClicked(!isClicked)
+            }}
           />
         )
       })}

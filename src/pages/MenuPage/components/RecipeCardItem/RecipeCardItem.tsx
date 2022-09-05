@@ -3,6 +3,7 @@ import React from 'react'
 import star from '@img/Star 3.svg'
 import { Link } from 'react-router-dom'
 
+
 import styles from './RecipeCardItem.module.scss'
 
 type CardProps = {
@@ -22,6 +23,7 @@ export const RecipeCardItem: React.FC<CardProps> = ({
                                                       calories,
                                                       onClick,
                                                     }) => {
+
   return (
     <div className={styles.card} onClick={onClick}>
       <div className={styles['card__block']}>
@@ -31,6 +33,7 @@ export const RecipeCardItem: React.FC<CardProps> = ({
         </div>
         <img
           className={styles['card__block-img']}
+          height='70px'
           src={image}
           alt={'food'}
         />

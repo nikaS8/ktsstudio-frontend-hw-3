@@ -6,14 +6,6 @@ export type RecipeContexProps = {
   detailsInfo: RecipeDetails | null
 }
 
-export interface RecipeResult {
-  id: string
-  image: string
-  title: string
-  calories: string
-  ingredients: string[]
-}
-
 export interface RecipeDetails {
   id: string
   image: string
@@ -21,8 +13,3 @@ export interface RecipeDetails {
   summary: string
 }
 
-export interface SearchRecipe {
-  id: string
-  image: string
-  title: string
-}
