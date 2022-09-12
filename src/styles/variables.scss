@@ -1,5 +1,6 @@
 // colors
 $white: #ffffff;
+$dark-white: #f9f9f9;
 $red: #ff0000;
 $yellow: #ffd100;
 $light-pink: #fff0f0;
@@ -12,7 +13,7 @@ $cardWidth: 155px;
 
 //height
 $cardTitleH: 100px;
-$cardSubtitleH: 180px;
+$cardSubtitleH: 131px;
 
 @mixin text($font-weight, $font-size, $line-height) {
   font-weight: $font-weight;
@@ -21,6 +22,11 @@ $cardSubtitleH: 180px;
 }
 
 @mixin button-size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+@mixin loader-size($width, $height) {
   width: $width;
   height: $height;
 }

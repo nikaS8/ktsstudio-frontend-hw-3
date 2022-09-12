@@ -4,19 +4,20 @@ import { APP_ROUTES } from '@config/routes'
 import heart from '@img/Heart.svg'
 import path from '@img/Path.svg'
 import star from '@img/Star 3.svg'
-import { useRecipeContext } from '@pages/RecipeContext/RecipeContex'
+import { observer, useLocalStore } from 'mobx-react-lite'
 import { Link, useParams } from 'react-router-dom'
 
+import DetailRecipePageStore from '../../store/DetailRecipePageStore/DetailRecipePageStore'
 import styles from './DetailRecipePage.module.scss'
 
 const DOMPurify = require('dompurify')(window)
 
 const DetailRecipePage = () => {
   const { id } = useParams()
-  const { fetchDetailsInfo, detailsInfo } = useRecipeContext()
+  const detailsStore = useLocalStore(() => new DetailRecipePageStore())
 
   useEffect(() => {
-    id && fetchDetailsInfo(id)
+    id && detailsStore.fetchDetailsInfo(id)
   }, [id])
 
   return (
@@ -26,9 +27,10 @@ const DetailRecipePage = () => {
           <img src={path} alt={'path'} />
         </button>
       </Link>
-      <img src={detailsInfo?.image} alt={detailsInfo?.title} className={styles['recipe__img']} />
+      <img src={detailsStore.detailedInfo?.image} alt={detailsStore.detailedInfo?.title}
+           className={styles['recipe__img']} />
       <div className={styles['recipe__description']}>
-        <div className={styles['recipe__description-title']}>{detailsInfo?.title}</div>
+        <div className={styles['recipe__description-title']}>{detailsStore.detailedInfo?.title}</div>
         <div className={styles['recipe__description-rating']}>
           <div className={styles['recipe__description-rating-star']}>
             <img
@@ -43,9 +45,9 @@ const DetailRecipePage = () => {
             <p>3.8 Rating</p>
           </div>
         </div>
-        {detailsInfo && (
+        {detailsStore.detailedInfo && (
           <div
-            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(detailsInfo.summary) }}
+            dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(detailsStore.detailedInfo.summary) }}
             className={styles['recipe__description-summary']}
           />
         )}
@@ -54,4 +56,4 @@ const DetailRecipePage = () => {
   )
 }
 
-export default DetailRecipePage
+export default observer(DetailRecipePage)
