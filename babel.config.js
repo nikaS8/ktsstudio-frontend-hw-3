@@ -14,9 +14,5 @@ module.exports = api => {
     return {
         presets,
         plugins,
-        // "plugins": [plugin, ["@babel/plugin-proposal-class-properties"]],
-        // "assumptions": {
-        //     "setPublicClassFields": false
-        // }
     }
 }
