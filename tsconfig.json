@@ -1,9 +1,8 @@
 {
   "compilerOptions": {
-    "experimentalDecorators": true,
     "baseUrl": "src",
     "paths": {
-      "@config/*": ["./config/*"],
+      "@config/*": ["config/*"],
       "@components/*": ["./components/*"],
       "@context/*": ["./context/*"],
       "@styles/*": ["./styles/*"],
@@ -11,23 +10,60 @@
       "@myTypes/*": ["./myTypes/*"],
       "@pages/*": ["./pages/*"],
       "@RecipesCardsPage/*": ["./pages/RecipesCardsPage"],
-      "@DetailRecipePage/*": ["./pages/DetailRecipePage"]
+      "@DetailRecipePage/*": ["./pages/DetailRecipePage"],
+      "@utils/*": ["./utils/*"],
+      "@store/*": ["./store/*"]
     },
-    "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "sourceMap": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "es6",
+    "target": "es6",
+    "jsx": "react",
+    "allowJs": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
-  "include": ["src"]
+  "include": ["src/**/*"],
+
 }
+//{
+//  "compilerOptions": {
+//    "experimentalDecorators": true,
+//    "baseUrl": "src",
+//    "paths": {
+//      "@config/*": ["./config/*"],
+//      "@components/*": ["./components/*"],
+//      "@context/*": ["./context/*"],
+//      "@styles/*": ["./styles/*"],
+//      "@img/*": ["./assets/img/*"],
+//      "@myTypes/*": ["./myTypes/*"],
+//      "@pages/*": ["./pages/*"],
+//      "@RecipesCardsPage/*": ["./pages/RecipesCardsPage"],
+//      "@DetailRecipePage/*": ["./pages/DetailRecipePage"]
+//    },
+//    "target": "es5",
+//    "lib": ["dom", "dom.iterable", "esnext"],
+//    "allowJs": true,
+//    "skipLibCheck": true,
+//    "esModuleInterop": true,
+//    "allowSyntheticDefaultImports": true,
+//    "strict": true,
+//    "forceConsistentCasingInFileNames": true,
+//    "noFallthroughCasesInSwitch": true,
+//    "module": "esnext",
+//    "moduleResolution": "node",
+//    "resolveJsonModule": true,
+//    "isolatedModules": true,
+//    "noEmit": true,
+//    "jsx": "react-jsx",
+//    "useDefineForClassFields": true
+//  },
+//  "include": ["src"],
+//  "exclude": ["node_modules"]
+//}

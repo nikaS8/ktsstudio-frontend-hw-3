@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { action, computed, makeObservable, observable, runInAction } from 'mobx'
-import { Meta } from 'utils/meta'
+import { Meta } from '@utils/meta'
 
 import { IRecipeResultModel } from '../models/recipe'
 import { ILocalStore, IMenuPageStore } from './types'
@@ -76,7 +76,7 @@ export default class MenuPageStore implements IMenuPageStore, ILocalStore {
     try {
       const result = await axios({
         method: 'get',
-        url: `https://api.spoonacular.com/recipes/complexSearch?addRecipeNutrition=true&number=4&apiKey=${process.env.REACT_APP_API_KEY_V_1}`,
+        url: `https://api.spoonacular.com/recipes/complexSearch?addRecipeNutrition=true&number=5&apiKey=${process.env.REACT_APP_API_KEY_V_2}`,
       })
       runInAction(() => {
         this._mealData = result.data.results.map((raw: any) => ({
@@ -110,7 +110,7 @@ export default class MenuPageStore implements IMenuPageStore, ILocalStore {
     try {
       const result = await axios({
         method: 'get',
-        url: `https://api.spoonacular.com/recipes/complexSearch?addRecipeNutrition=true&number=${this._number}&offset=${this._offset}&apiKey=${process.env.REACT_APP_API_KEY_V_1}`,
+        url: `https://api.spoonacular.com/recipes/complexSearch?addRecipeNutrition=true&number=${this._number}&offset=${this._offset}&apiKey=${process.env.REACT_APP_API_KEY_V_2}`,
       })
       runInAction(() => {
         newData = result.data.results.map((raw: any) => ({
@@ -148,7 +148,7 @@ export default class MenuPageStore implements IMenuPageStore, ILocalStore {
     try {
       const result = await axios({
         method: 'get',
-        url: `https://api.spoonacular.com/recipes/complexSearch?type=${category}&number=${this._number}&offset=${this._offset}&addRecipeNutrition=true&apiKey=${process.env.REACT_APP_API_KEY_V_1}`,
+        url: `https://api.spoonacular.com/recipes/complexSearch?type=${category}&number=${this._number}&offset=${this._offset}&addRecipeNutrition=true&apiKey=${process.env.REACT_APP_API_KEY_2}`,
       })
       runInAction(() => {
         this._meta = Meta.success
@@ -179,7 +179,7 @@ export default class MenuPageStore implements IMenuPageStore, ILocalStore {
     try {
       const result = await axios({
         method: 'get',
-        url: `https://api.spoonacular.com/recipes/complexSearch?query=${name}&number=${this._number}&offset=${this._offset}&addRecipeNutrition=true&apiKey=${process.env.REACT_APP_API_KEY_V_1}`,
+        url: `https://api.spoonacular.com/recipes/complexSearch?query=${name}&number=${this._number}&offset=${this._offset}&addRecipeNutrition=true&apiKey=${process.env.REACT_APP_API_KEY_1}`,
       })
       runInAction(() => {
         this._meta = Meta.success

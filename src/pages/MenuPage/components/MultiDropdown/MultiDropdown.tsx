@@ -43,7 +43,7 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
             value={option.value}
             onClick={() => {
               onChange(option)
-              setIsClicked(!isClicked)
+              setIsClicked((prev) => !prev)
             }}
           />
         )

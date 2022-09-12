@@ -22,12 +22,13 @@
     &-img {
       display: block;
       width: 87px;
+      height: 70px;
       margin-left: auto;
       margin-right: auto;
     }
 
     &-title {
-      height: $cardTitleH;
+      min-height: $cardTitleH;
       margin-top: 15px;
       @include text(500, 18px, 25px);
     }

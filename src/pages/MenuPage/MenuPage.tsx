@@ -4,10 +4,10 @@ import Input from '@components/Input/Input'
 import { Loader, LoaderSize } from '@components/Loader/Loader'
 import { observer, useLocalStore } from 'mobx-react-lite'
 import { useSearchParams } from 'react-router-dom'
-import { IRecipeResultModel } from 'store/models/recipe'
+import { IRecipeResultModel } from '@store/models/recipe'
 
-import MenuPageStore from '../../store/MenuPageStore'
-import { Meta } from '../../utils/meta'
+import MenuPageStore from '@store/MenuPageStore'
+import { Meta } from '@utils/meta'
 import { MultiDropdown, Option } from './components/MultiDropdown/MultiDropdown'
 import RecipeCardItem from './components/RecipeCardItem'
 import styles from './MenuPage.module.scss'
@@ -28,11 +28,18 @@ const multiDropdownCategories = [
   { key: 'drink', value: 'Drink' },
 ]
 
+enum ScrollDirection {
+  up = 'up',
+  down = 'down',
+}
+
 const MenuPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<Option | null>(null)
   const menuStore = useLocalStore(() => new MenuPageStore)
   const [searchParams, setSearchParams] = useSearchParams()
   const menuRef = useRef(null)
+  const [y, setY] = useState(0);
+  const [scrollDirection, setScrollDirection] = useState("you have not scrolled yet");
 
   menuStore.updateSearchVal(searchParams.get('search') || '')
 
@@ -75,17 +82,24 @@ const MenuPage = () => {
   }
 
   const onScroll = (e: React.UIEvent<HTMLElement>) => {
-    if (!menuStore.isLoading && (menuStore.hasMore) && (e.currentTarget.scrollTop + 50 + e.currentTarget.clientHeight >= e.currentTarget.scrollHeight)) {
-      menuStore.isLoading = true
-      menuStore.incrementOffset(menuStore.offset + 5)
-      if (selectedCategory !== null) {
-        menuStore.fetchRecipeByCategory(selectedCategory.key)
-      } else if (menuStore.searchVal.length !== 0) {
-        menuStore.fetchRecipeByName(menuStore.searchVal)
-      } else {
-        menuStore.fetchOffsetData()
+    if (y > e.currentTarget.scrollTop) {
+      setScrollDirection(ScrollDirection.up);
+    }
+    if (y < e.currentTarget.scrollTop) {
+      setScrollDirection(ScrollDirection.down);
+      if ((!menuStore.isLoading) && (menuStore.hasMore) && (e.currentTarget.scrollTop + 50 + e.currentTarget.clientHeight >= e.currentTarget.scrollHeight)) {
+        menuStore.isLoading = true;
+        menuStore.incrementOffset(menuStore.offset + 5);
+        if (selectedCategory !== null) {
+          menuStore.fetchRecipeByCategory(selectedCategory.key)
+        } else if (menuStore.searchVal.length !== 0) {
+          menuStore.fetchRecipeByName(menuStore.searchVal)
+        } else {
+          menuStore.fetchOffsetData()
+        }
       }
     }
+    setY(e.currentTarget.scrollTop)
   }
 
   return (

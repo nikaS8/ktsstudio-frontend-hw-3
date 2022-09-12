@@ -33,7 +33,6 @@ export const RecipeCardItem: React.FC<CardProps> = ({
         </div>
         <img
           className={styles['card__block-img']}
-          height='70px'
           src={image}
           alt={'food'}
         />
