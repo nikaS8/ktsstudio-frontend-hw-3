@@ -3,4 +3,6 @@ export type RecipeDetails = {
   image: string
   title: string
   summary: string
+  rating: string
+  hearts: string
 }

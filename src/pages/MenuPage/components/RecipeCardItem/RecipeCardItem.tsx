@@ -12,6 +12,7 @@ type CardProps = {
   title: React.ReactNode
   subtitle: string[]
   calories?: React.ReactNode
+  rating: string
   onClick?: React.MouseEventHandler
 }
 
@@ -21,26 +22,31 @@ export const RecipeCardItem: React.FC<CardProps> = ({
                                                       title,
                                                       subtitle,
                                                       calories,
+                                                      rating,
                                                       onClick,
                                                     }) => {
 
-  return (
+  const subtitleStr = subtitle.map((word) => `${word}`).join(', ');
+    return (
     <div className={styles.card} onClick={onClick}>
       <div className={styles['card__block']}>
-        <div className={styles['card__block-rating']}>
-          <img src={star} alt={'star'} />
-          <p className={styles['card__block-rating-num']}>{'3.8'}</p>
+        <div className={styles['card__block-header']}>
+          <div className={styles['card__block-header-rating']}>
+              <img src={star} alt={'star'} />
+              <p className={styles['card__block-header-rating-num']}>{rating}</p>
+          </div>
         </div>
-        <img
-          className={styles['card__block-img']}
-          height='70px'
-          src={image}
-          alt={'food'}
-        />
-        <h1 className={styles['card__block-title']}>{title}</h1>
-        <h2 className={styles['card__block-subtitle']}>
-          {subtitle.map((word) => `${word}, `)}
-        </h2>
+        <div className={styles['card__block-content']}>
+            <img
+                className={styles['card__block-content-img']}
+                src={image}
+                alt={'food'}
+            />
+            <h1 className={styles['card__block-content-title']}>{title}</h1>
+            <h2 className={styles['card__block-content-subtitle']}>
+                {subtitleStr}
+            </h2>
+        </div>
         <div className={styles['card__block-footer']}>
           <h3 className={styles['card__block-footer-content']}>
             {Math.round(Number(calories))} kcal

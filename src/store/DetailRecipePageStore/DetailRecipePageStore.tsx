@@ -1,7 +1,7 @@
+import { Meta } from '@utils/meta'
 import axios from 'axios'
 import { action, computed, makeObservable, observable, runInAction } from 'mobx'
 
-import { Meta } from '../../utils/meta'
 import { ILocalStore } from '../MenuPageStore/types'
 import { RecipeDetails } from '../models/recipe'
 import { IDetailRecipePageStore } from './types'
@@ -14,7 +14,7 @@ export default class DetailRecipePageStore implements IDetailRecipePageStore, IL
 
   constructor
   () {
-    makeObservable<IDetailRecipePageStore, PrivateFields>(this, {
+    makeObservable<DetailRecipePageStore, PrivateFields>(this, {
       _detailedInfo: observable.ref,
       _meta: observable,
       detailedInfo: computed,
@@ -40,7 +40,7 @@ export default class DetailRecipePageStore implements IDetailRecipePageStore, IL
     try {
       const res = await axios({
         method: 'get',
-        url: `https://api.spoonacular.com/recipes/${id}/information?apiKey=${process.env.REACT_APP_API_KEY}`,
+        url: `https://api.spoonacular.com/recipes/${id}/information?apiKey=64762942fad54dbea83fb7b0803d1c37`,
       })
       runInAction(() => {
         this._meta = Meta.success
@@ -49,6 +49,8 @@ export default class DetailRecipePageStore implements IDetailRecipePageStore, IL
           image: res.data.image,
           title: res.data.title,
           summary: res.data.summary,
+          rating: res.data.aggregateLikes,
+          hearts: res.data.healthScore,
         }
       })
     } catch (error) {

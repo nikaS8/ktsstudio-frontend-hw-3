@@ -15,34 +15,23 @@
     @include button-size(176px, 36px);
   }
 
-  &__item {
-    display: block;
-    width: 176px;
-    height: 36px;
-    border: transparent;
-    background: linear-gradient(98.81deg, $light-pink -0.82%, $dark-pink 101.53%);
-    mix-blend-mode: soft-light;
-    border-radius: 7px;
-    text-align: left;
+  &__block {
+    position: absolute;
+    top: 40px;
+    z-index: 2;
+
+    &-item {
+      display: block;
+      width: 176px;
+      height: 36px;
+      border: transparent;
+      background: linear-gradient(98.81deg, $light-pink -0.82%, $dark-pink 101.53%);
+      mix-blend-mode: soft-light;
+      border-radius: 7px;
+      text-align: left;
+    }
   }
+
+
 }
 
-//
-//.dropdown_button {
-//  border: transparent;
-//  background: linear-gradient(98.81deg, $light-pink -0.82%, $dark-pink 101.53%);
-//  border-radius: 7px;
-//  text-align: left;
-//  @include button-size(176px, 36px);
-//}
-//
-//.dropdown_item {
-//  display: block;
-//  width: 176px;
-//  height: 36px;
-//  border: transparent;
-//  background: linear-gradient(98.81deg, $light-pink -0.82%, $dark-pink 101.53%);
-//  mix-blend-mode: soft-light;
-//  border-radius: 7px;
-//  text-align: left;
-//}

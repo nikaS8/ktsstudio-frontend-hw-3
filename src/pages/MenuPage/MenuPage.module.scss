@@ -1,8 +1,32 @@
 @import '../../styles/variables';
 
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.dropdown {
+  position: relative;
+}
+
 .menu {
   max-width: $mobileWidth;
-  padding-left: 24px;
+  position: relative;
+  padding: 24px 24px 0;
+
+  &__img {
+    opacity: .1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 375px;
+    z-index: -1;
+  }
+
+  &__input {
+
+  }
 
   &__recipe {
     display: flex;
