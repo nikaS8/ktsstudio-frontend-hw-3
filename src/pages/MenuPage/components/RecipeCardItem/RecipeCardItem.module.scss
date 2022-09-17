@@ -2,41 +2,50 @@
 
 .card {
   width: $cardWidth;
+  //height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
   margin-bottom: 15px;
+  margin-left: 10px;
   background: $white;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.12);
   border-radius: 10px;
 
   &__block {
-    padding-left: 12px;
-    padding-right: 12px;
+    padding: 8px 12px;
 
-    &-rating {
-      display: flex;
+    &-header {
+      &-rating {
+        display: flex;
 
-      &-num {
-        margin-left: 4px;
+        &-num {
+          margin-left: 4px;
+        }
       }
     }
 
-    &-img {
-      display: block;
-      width: 87px;
-      height: 70px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+    &-content {
+      &-img {
+        display: block;
+        width: 87px;
+        height: 70px;
+        margin-left: auto;
+        margin-right: auto;
+      }
 
-    &-title {
-      min-height: $cardTitleH;
-      margin-top: 15px;
-      @include text(500, 18px, 25px);
-    }
+      &-title {
+        min-height: $cardTitleH;
+        margin-top: 15px;
+        @include text(500, 18px, 25px);
+      }
 
-    &-subtitle {
-      height: $cardSubtitleH;
-      @include text(400, 12px, 16px);
-      letter-spacing: -0.03em;
+      &-subtitle {
+        min-height: $cardSubtitleH;
+        color: $light-black;
+        @include text(400, 12px, 16px);
+        letter-spacing: -0.03em;
+      }
     }
 
     &-footer {

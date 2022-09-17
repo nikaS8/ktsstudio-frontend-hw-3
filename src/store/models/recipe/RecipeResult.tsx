@@ -4,4 +4,5 @@ export type IRecipeResultModel = {
   title: string
   calories: string
   ingredients: string[]
+  rating: string
 }

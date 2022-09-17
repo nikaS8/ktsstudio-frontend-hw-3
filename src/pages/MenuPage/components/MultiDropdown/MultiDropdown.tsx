@@ -32,22 +32,24 @@ export const MultiDropdown: React.FC<MultiDropdownProps> = ({
         value={pluralizeOptions(value)}
         onClick={() => setIsClicked(!isClicked)}
       />
-      {isClicked &&
-      !disabled &&
-      options.map((option) => {
-        return (
-          <input
-            className={styles['dropdown__item']}
-            type='button'
-            key={option.key}
-            value={option.value}
-            onClick={() => {
-              onChange(option)
-              setIsClicked((prev) => !prev)
-            }}
-          />
-        )
-      })}
+        <div className={styles['dropdown__block']}>
+            {isClicked &&
+            !disabled &&
+            options.map((option) => {
+                return (
+                    <input
+                        className={styles['dropdown__block-item']}
+                        type='button'
+                        key={option.key}
+                        value={option.value}
+                        onClick={() => {
+                            onChange(option)
+                            setIsClicked((prev) => !prev)
+                        }}
+                    />
+                )
+            })}
+        </div>
     </div>
   )
 }

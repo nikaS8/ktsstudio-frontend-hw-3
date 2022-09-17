@@ -2,15 +2,18 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import Input from '@components/Input/Input'
 import { Loader, LoaderSize } from '@components/Loader/Loader'
-import { observer, useLocalStore } from 'mobx-react-lite'
-import { useSearchParams } from 'react-router-dom'
-import { IRecipeResultModel } from '@store/models/recipe'
-
+import Group from '@img/Group.png'
 import MenuPageStore from '@store/MenuPageStore'
+import { IRecipeResultModel } from '@store/models/recipe'
 import { Meta } from '@utils/meta'
+import { observer, useLocalObservable } from 'mobx-react-lite'
+import { useSearchParams } from 'react-router-dom'
+
+
 import { MultiDropdown, Option } from './components/MultiDropdown/MultiDropdown'
 import RecipeCardItem from './components/RecipeCardItem'
 import styles from './MenuPage.module.scss'
+
 
 const multiDropdownCategories = [
   { key: 'main course', value: 'Main course' },
@@ -33,13 +36,16 @@ enum ScrollDirection {
   down = 'down',
 }
 
+let SCROLLING = false;
+
 const MenuPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<Option | null>(null)
-  const menuStore = useLocalStore(() => new MenuPageStore)
+  const menuStore = useLocalObservable(() => new MenuPageStore)
   const [searchParams, setSearchParams] = useSearchParams()
   const menuRef = useRef(null)
   const [y, setY] = useState(0);
   const [scrollDirection, setScrollDirection] = useState("you have not scrolled yet");
+  const [twoFilters, setTwoFilters] = useState(false)
 
   menuStore.updateSearchVal(searchParams.get('search') || '')
 
@@ -48,7 +54,10 @@ const MenuPage = () => {
   }, [])
 
   useEffect(() => {
-    if (selectedCategory !== null) {
+    if (selectedCategory !== null && !menuStore.searchVal.length) {
+      setTwoFilters(false);
+      menuStore.makeOffsetZero()
+      menuStore.makeMealDataZero()
       menuStore.fetchRecipeByCategory(selectedCategory.key)
     } else {
       menuStore.hasMore && menuStore.fetchMealData()
@@ -56,12 +65,19 @@ const MenuPage = () => {
   }, [selectedCategory])
 
   useEffect(() => {
-    if (menuStore.searchVal.length !== 0) {
-      menuStore.fetchRecipeByName(menuStore.searchVal)
+    if (menuStore.searchVal.length !== 0 && selectedCategory === null) {
+      setTwoFilters(false);
+      menuStore.fetchRecipeByName(menuStore.searchVal, SCROLLING)
     } else {
       menuStore.hasMore && menuStore.fetchMealData()
     }
   }, [menuStore.searchVal])
+
+  useEffect(() => {
+    if(menuStore.searchVal.length && selectedCategory !== null) {
+      setTwoFilters(true);
+    }
+  }, [menuStore.searchVal, selectedCategory])
 
   const switchCategory = useCallback((value: Option) => {
       if (value.key !== selectedCategory?.key) {
@@ -87,51 +103,63 @@ const MenuPage = () => {
     }
     if (y < e.currentTarget.scrollTop) {
       setScrollDirection(ScrollDirection.down);
-      if ((!menuStore.isLoading) && (menuStore.hasMore) && (e.currentTarget.scrollTop + 50 + e.currentTarget.clientHeight >= e.currentTarget.scrollHeight)) {
+      if ((!menuStore.isLoading) && (menuStore.hasMore) && (!twoFilters) && (e.currentTarget.scrollTop + 50 + e.currentTarget.clientHeight >= e.currentTarget.scrollHeight)) {
         menuStore.isLoading = true;
-        menuStore.incrementOffset(menuStore.offset + 5);
-        if (selectedCategory !== null) {
+        menuStore.incrementOffset( menuStore.offset + 5);
+        if (selectedCategory !== null && !menuStore.searchVal.length) {
           menuStore.fetchRecipeByCategory(selectedCategory.key)
-        } else if (menuStore.searchVal.length !== 0) {
-          menuStore.fetchRecipeByName(menuStore.searchVal)
-        } else {
+        } else if (menuStore.searchVal.length !== 0 && selectedCategory === null) {
+          SCROLLING = true;
+          menuStore.fetchRecipeByName(menuStore.searchVal, SCROLLING);
+        } else if (menuStore.searchVal.length !== 0 && selectedCategory !== null) {
+          setTwoFilters(true);
+        }
+        else {
           menuStore.fetchOffsetData()
         }
       }
     }
+    SCROLLING = false;
     setY(e.currentTarget.scrollTop)
   }
 
   return (
-    <div className={styles.menu}>
-      <Input className={styles.menu} onChange={(value: string) => handleInput(value)} value={menuStore.searchVal} />
-      <MultiDropdown
-        options={multiDropdownCategories}
-        value={selectedCategory}
-        onChange={(value) => switchCategory(value)}
-        pluralizeOptions={(value) =>
-          value === null ? 'Pick categories' : `${value.value}`
-        }
-      />
-      {menuStore.meta === 'error' && <div className={styles.error}>Can not find any recipe for you!</div>}
-      {menuStore.meta !== 'error' &&
-      <div onScroll={(e) => onScroll(e)} ref={menuRef} className={styles['menu__recipe']}>
-        {menuStore.mealData?.map((food: IRecipeResultModel) => (
-          <RecipeCardItem
-            key={food.id}
-            meal={food}
-            image={food.image}
-            title={food.title}
-            subtitle={food.ingredients}
-            calories={food.calories}
+    <div className={styles.wrapper}>
+      <div className={styles.menu}>
+        <img className={styles['menu__img']} src={Group} alt={'group'}/>
+        <Input className={styles['menu__input']} onChange={(value: string) => handleInput(value)} value={menuStore.searchVal} />
+        <div className={styles.dropdown} style={{position: 'relative'}}>
+          <MultiDropdown
+              options={multiDropdownCategories}
+              value={selectedCategory}
+              onChange={(value) => switchCategory(value)}
+              pluralizeOptions={(value) =>
+                  value === null ? 'Pick categories' : `${value.value}`
+              }
           />
-        ))}
-        {<Loader size={LoaderSize.l} loading={menuStore.meta === Meta.loading} />}
+        </div>
+        {twoFilters && <div className={styles.error}>Please choose one filter and reload</div>}
+        {menuStore.meta === 'error' && <div className={styles.error}>Can not find any recipe for you!</div>}
+        {menuStore.meta !== 'error' && !twoFilters &&
+        <div onScroll={(e) => onScroll(e)} ref={menuRef} className={styles['menu__recipe']}>
+          {menuStore.mealData?.map((food: IRecipeResultModel) => (
+            <RecipeCardItem
+              key={food.id}
+              meal={food}
+              image={food.image}
+              title={food.title}
+              subtitle={food.ingredients}
+              calories={food.calories}
+              rating={food.rating}
+            />
+          ))}
+          {<Loader size={LoaderSize.l} loading={menuStore.meta === Meta.loading} />}
+        </div>
+        }
+        {!menuStore.hasMore && (
+          <div className={styles.error}>You've seen all recipes</div>
+        )}
       </div>
-      }
-      {!menuStore.hasMore && (
-        <div className={styles.error}>You've seen all data</div>
-      )}
     </div>
   )
 }

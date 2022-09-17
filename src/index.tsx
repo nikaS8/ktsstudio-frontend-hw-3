@@ -1,7 +1,7 @@
 import * as React from "react";
+
 import { render } from 'react-dom';
 
-import styles from './style.module.scss'
 import './config/configureMobX'
 import ReactDOM from 'react-dom/client'
 
