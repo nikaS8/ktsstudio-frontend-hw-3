@@ -32,38 +32,3 @@
   "include": ["src/**/*"],
 
 }
-//{
-//  "compilerOptions": {
-//    "experimentalDecorators": true,
-//    "baseUrl": "src",
-//    "paths": {
-//      "@config/*": ["./config/*"],
-//      "@components/*": ["./components/*"],
-//      "@context/*": ["./context/*"],
-//      "@styles/*": ["./styles/*"],
-//      "@img/*": ["./assets/img/*"],
-//      "@myTypes/*": ["./myTypes/*"],
-//      "@pages/*": ["./pages/*"],
-//      "@RecipesCardsPage/*": ["./pages/RecipesCardsPage"],
-//      "@DetailRecipePage/*": ["./pages/DetailRecipePage"]
-//    },
-//    "target": "es5",
-//    "lib": ["dom", "dom.iterable", "esnext"],
-//    "allowJs": true,
-//    "skipLibCheck": true,
-//    "esModuleInterop": true,
-//    "allowSyntheticDefaultImports": true,
-//    "strict": true,
-//    "forceConsistentCasingInFileNames": true,
-//    "noFallthroughCasesInSwitch": true,
-//    "module": "esnext",
-//    "moduleResolution": "node",
-//    "resolveJsonModule": true,
-//    "isolatedModules": true,
-//    "noEmit": true,
-//    "jsx": "react-jsx",
-//    "useDefineForClassFields": true
-//  },
-//  "include": ["src"],
-//  "exclude": ["node_modules"]
-//}
