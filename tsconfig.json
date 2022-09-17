@@ -1,18 +1,18 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": "./",
     "paths": {
-      "@config/*": ["config/*"],
-      "@components/*": ["./components/*"],
-      "@context/*": ["./context/*"],
-      "@styles/*": ["./styles/*"],
-      "@img/*": ["./assets/img/*"],
-      "@myTypes/*": ["./myTypes/*"],
-      "@pages/*": ["./pages/*"],
-      "@RecipesCardsPage/*": ["./pages/RecipesCardsPage"],
-      "@DetailRecipePage/*": ["./pages/DetailRecipePage"],
-      "@utils/*": ["./utils/*"],
-      "@store/*": ["./store/*"]
+      "@config/*": ["./src/config/*"],
+      "@components/*": ["./src/components/*"],
+      "@context/*": ["./src/context/*"],
+      "@styles/*": ["./src/styles/*"],
+      "@img/*": ["./src/assets/img/*"],
+      "@myTypes/*": ["./src/myTypes/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@RecipesCardsPage/*": ["./src/pages/RecipesCardsPage"],
+      "@DetailRecipePage/*": ["./src/pages/DetailRecipePage"],
+      "@utils/*": ["./src/utils/*"],
+      "@store/*": ["./src/store/*"]
     },
     "noEmit": true,
     "sourceMap": true,
