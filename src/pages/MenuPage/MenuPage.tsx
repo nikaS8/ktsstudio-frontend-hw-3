@@ -127,6 +127,7 @@ const MenuPage = () => {
     <div className={styles.wrapper}>
       <div className={styles.menu}>
         <img className={styles['menu__img']} src={Group} alt={'group'}/>
+
         <Input className={styles['menu__input']} onChange={(value: string) => handleInput(value)} value={menuStore.searchVal} />
         <div className={styles.dropdown} style={{position: 'relative'}}>
           <MultiDropdown
