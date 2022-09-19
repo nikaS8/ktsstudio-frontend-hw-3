@@ -1,4 +1,4 @@
 export const APP_ROUTES = {
-  RECIPE: '/recipe-book',
+  RECIPE: '/',
   RECIPE_DETAIL: '/detail-recipe/:id',
 }
