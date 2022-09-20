@@ -40,7 +40,7 @@ export default class DetailRecipePageStore implements IDetailRecipePageStore, IL
     try {
       const res = await axios({
         method: 'get',
-        url: `https://api.spoonacular.com/recipes/${id}/information?apiKey=ed84aed79f39445eb822b6ea9d16d6ea`,
+        url: `https://api.spoonacular.com/recipes/${id}/information?apiKey=74e0dec4cbd74b968c02ddbd8b9850e8`,
       })
       runInAction(() => {
         this._meta = Meta.success

@@ -80,7 +80,7 @@ export default class MenuPageStore implements IMenuPageStore, ILocalStore {
     try {
       const result = await axios({
         method: 'get',
-        url: `https://api.spoonacular.com/recipes/complexSearch?addRecipeNutrition=true&number=5&apiKey=ed84aed79f39445eb822b6ea9d16d6ea`,
+        url: `https://api.spoonacular.com/recipes/complexSearch?addRecipeNutrition=true&number=5&apiKey=74e0dec4cbd74b968c02ddbd8b9850e8`,
       })
       runInAction(() => {
         this._mealData = result.data.results.map((raw: any) => ({
@@ -115,7 +115,7 @@ export default class MenuPageStore implements IMenuPageStore, ILocalStore {
     try {
       const result = await axios({
         method: 'get',
-        url: `https://api.spoonacular.com/recipes/complexSearch?addRecipeNutrition=true&number=${this._number}&offset=${this._offset}&apiKey=ed84aed79f39445eb822b6ea9d16d6ea`,
+        url: `https://api.spoonacular.com/recipes/complexSearch?addRecipeNutrition=true&number=${this._number}&offset=${this._offset}&apiKey=74e0dec4cbd74b968c02ddbd8b9850e8`,
       })
       runInAction(() => {
         newData = result.data.results.map((raw: any) => ({
@@ -155,7 +155,7 @@ export default class MenuPageStore implements IMenuPageStore, ILocalStore {
     try {
       const result = await axios({
         method: 'get',
-        url: `https://api.spoonacular.com/recipes/complexSearch?type=${category}&number=${this._number}&offset=${this._offset}&addRecipeNutrition=true&apiKey=ed84aed79f39445eb822b6ea9d16d6ea`,
+        url: `https://api.spoonacular.com/recipes/complexSearch?type=${category}&number=${this._number}&offset=${this._offset}&addRecipeNutrition=true&apiKey=74e0dec4cbd74b968c02ddbd8b9850e8`,
       })
       runInAction(() => {
         newData = result.data.results.map((raw: any) => ({
@@ -197,7 +197,7 @@ export default class MenuPageStore implements IMenuPageStore, ILocalStore {
     try {
       const result = await axios({
         method: 'get',
-        url: `https://api.spoonacular.com/recipes/complexSearch?query=${name}&number=${this._number}&offset=${this._offset}&addRecipeNutrition=true&apiKey=ed84aed79f39445eb822b6ea9d16d6ea`,
+        url: `https://api.spoonacular.com/recipes/complexSearch?query=${name}&number=${this._number}&offset=${this._offset}&addRecipeNutrition=true&apiKey=74e0dec4cbd74b968c02ddbd8b9850e8`,
       })
       runInAction(() => {
         newData = result.data.results.map((raw: any) => ({
